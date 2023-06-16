@@ -1,12 +1,5 @@
 import { IGetAllTask } from '../interface/taskInterface';
-
-const userField = document.querySelector("#user-name")!;
-const userImage = document.querySelector("#user-image")!;
-const taskName = document.querySelector("#task-name")!;
-const taskCheckbox = document.querySelector("#task-checkbox")!;
-const taskContainer = document.querySelector("#task-container")!;
-
-const baseURL = 'http://127.0.0.1:3000' as const;
+import { baseURL, taskApi } from "../service/taskApi"
 
 async function fetchData() {
   try {
@@ -26,6 +19,10 @@ async function fetchData() {
         checkbox.type = "checkbox";
         checkbox.classList.add("custom-checkbox", "absolute");
         checkbox.id = `task-checkbox-${task.id}`;
+        checkbox.checked = task.finished;
+        checkbox.onclick = function() {
+          taskApi.patchTaskEnd(task?.id, !task?.finished);
+        };
 
         const label = document.createElement("label");
         label.htmlFor = `task-checkbox-${task.id}`;
@@ -79,6 +76,9 @@ async function fetchData() {
         svgTrash.setAttribute("stroke-width", "1.5");
         svgTrash.setAttribute("stroke", "red");
         svgTrash.classList.add("w-6", "h-6", "cursor-pointer");
+        svgTrash.onclick = function() {
+          taskApi.deleteTask(task?.id);
+        };
 
         const pathTrash = document.createElementNS("http://www.w3.org/2000/svg", "path");
         pathTrash.setAttribute("stroke-linecap", "round");
