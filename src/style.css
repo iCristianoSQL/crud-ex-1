@@ -6,4 +6,77 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #49005f;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ffe600; 
+  border-radius: 6px;
+  border: 3px solid #49005f;
+}
+
+
+
+.gradient-global {
+    border: 2px solid;
+    border-image: linear-gradient(to right, #ffe600, #49005f);
+    border-image-slice: 1;
+}
+
+.section-animation {
+  animation: discover 1s ease 0s 1 normal forwards;
+}
+
+@keyframes discover {
+	0% {
+		transform: scale(0.5);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+.custom-checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid white;
+  border-radius: 4px;
+  outline: none;
+  transition: background-color 0.3s, border-color 0.3s;
+  cursor: pointer;
+}
+
+.custom-checkbox:checked {
+  background-color: green;
+  border-color: white;
+}
+
+.custom-checkbox:checked::after {
+  content: "\2713";
+  display: block;
+  text-align: center;
+  line-height: 2rem;
+  color: white;
+  font-weight: bold;
+}
+
+.profile-picture {
+  width: 2rem;
+  object-fit: cover;
+  border-radius: 100%;
+  border: 1px solid white;
 }
