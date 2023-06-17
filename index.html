@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <title>Vite + TS</title>
+    <title>TODO LIST</title>
   </head>
   <body>
     <main class="bg-black w-[100vw] h-[100vh] flex items-center justify-center">
@@ -19,8 +19,53 @@
           </ul>
         </div>
       </section>
+      <dialog class="bg-gray-800 m-auto h-96 w-[30rem] rounded-xl p-4" id="task-modal">
+        <div class="content-modal relative">
+          <button class="p-[0.1rem] absolute right-0" id="close-modal">X</button>
+          <h2 class="font-bold text-center">
+            Tarefa 01:
+          </h2>
+          <div class="flex flex-col">
+            <label class="font-semibold" for="title-task">Título:</label>
+            <input class="h-8 rounded-[8px] focus:outline-none text-black pl-2 pr-2" type="text" id="title-task" />
+          </div>
+
+          <div class="flex flex-col mt-2">
+            <label class="font-semibold" for="description">Descrição:</label>
+            <textarea class="h-40 rounded-[8px] focus:outline-none resize-none text-black pl-2 pr-2" id="description"></textarea>
+          </div>
+          <div class="flex mt-4 justify-center">
+            <button class="bg-black p-4 rounded-[10px] font-semibold" id="button-submit">Registrar</button>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="bg-gray-800 m-auto h-98 w-[30rem] rounded-xl p-4" id="user-modal">
+        <div class="content-modal relative">
+          <h2 class="font-bold text-center">
+            Informações do usuário
+          </h2>
+          <div class="flex flex-col">
+            <label class="font-semibold" for="title-task">Nome:</label>
+            <input class="h-8 rounded-[8px] focus:outline-none text-black pl-2 pr-2" type="text" id="user-name" />
+          </div>
+
+          <div class="flex flex-col mt-2">
+            <label class="font-semibold" for="title-task">URL da imagem:</label>
+            <input type="text" class="h-8 rounded-[8px] focus:outline-none text-black pl-2 pr-2" id="user-image-url" placeholder="Insira a URL da imagem">
+            <div class="w-full flex items-center justify-center h-44">
+              <div id="imageContainer" class="w-36"></div>
+            </div>
+          </div>
+
+          <div class="flex mt-4 justify-center">
+            <button class="bg-black p-4 rounded-[10px] font-semibold" id="user-submit">Registrar</button>
+          </div>
+        </div>
+      </dialog>
     </main>
     <script type="module" src="/src/javascript/main.ts"></script>
-    <script type="module" src="/src/javascript/getAllTasks.ts"></script>
+    <script src="/src/javascript//userModal.ts"></script>
+    <script type="module" src="/src/javascript/domTasksCrud.ts"></script>
   </body>
 </html>
