@@ -1,15 +1,23 @@
 import { taskApi } from "../service/taskApi"
+
 const taskModal: HTMLDialogElement = document.querySelector("#task-modal")!;
 const taskTitle: HTMLInputElement = document.querySelector("#title-task")!;
 const taskDescrition: HTMLTextAreaElement = document.querySelector("#description")!;
 const closeModal: HTMLButtonElement = document.querySelector("#close-modal")!;
 const buttonSubmit: HTMLButtonElement  = document.querySelector("#button-submit")!;
 
+const createTaskModal: HTMLDialogElement = document.querySelector("#create-task-modal")!;
+const createTaskTitle: HTMLInputElement = document.querySelector("#create-title-task")!;
+const createTaskDescription: HTMLTextAreaElement = document.querySelector("#create-description")!;
+const createTaskButtonSubmit: HTMLButtonElement = document.querySelector("#create-task-submit")!;
+const createTaskButton: HTMLButtonElement = document.querySelector("#create-task")!;
+const createCloseTaskModal: HTMLButtonElement = document.querySelector("#create-close-task-modal")!;
+
 let idForUpdate = 0;
 const userData = JSON.parse(localStorage.getItem('@userData') ?? '');
 
+// Atualizando uma tarefa
 buttonSubmit.addEventListener("click", () => {
-  console.log(idForUpdate);
   taskApi.updateTask(idForUpdate, {
     title: taskTitle.value,
     description: taskDescrition.value
@@ -19,6 +27,32 @@ buttonSubmit.addEventListener("click", () => {
 closeModal.addEventListener("click", () => {
   taskModal.close();
 });
+
+// Criando uma tarefa
+createTaskButton.addEventListener("click", () => {
+  createTaskModal.showModal();
+});
+
+createCloseTaskModal.addEventListener("click", () => {
+  createTaskModal.close();
+});
+
+createTaskButtonSubmit.addEventListener("click", async () => {
+  try {
+    const response = await taskApi.createTask({
+      user: userData[0].name,
+      photo: userData[0].urlImage,
+      title: createTaskTitle.value,
+      description: createTaskDescription.value,
+    });
+
+    console.log("Tarefa criada com sucesso:", response);
+    location.reload()
+  } catch (error) {
+    console.log("Erro ao criar a tarefa:", error);
+  }
+});
+
 
 async function fetchData() {
   try {

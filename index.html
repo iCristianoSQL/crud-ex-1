@@ -14,11 +14,15 @@
       <section class="bg-black w-[600px] h-[400px] gradient-global rounded-3xl pt-4 pr-3 pb-3 pl-3 section-animation">
         <h1 class='font-bold text-center text-3xl'>LISTA DE TAREFAS</h1>
         <p class="text-center font-semibold text-base">Apenas 3 tarefas restantes, pois já finalizamos 2 das 5 tarefas.</p>
-        <div class="bg-white w-full h-[70%] overflow-auto p-2">
+        <div class="bg-[#181818] rounded-[10px] w-full h-[70%] overflow-auto p-2">
           <ul class="flex flex-col gap-2">
           </ul>
         </div>
+        <div class="flex justify-center">
+          <button class="p-4 rounded-[10px] font-semibold" id="create-task">CRIAR TAREFA</button>
+        </div>
       </section>
+      <!-- Editando uma tarefa -->
       <dialog class="bg-gray-800 m-auto h-96 w-[30rem] rounded-xl p-4" id="task-modal">
         <div class="content-modal relative">
           <button class="p-[0.1rem] absolute right-0" id="close-modal">X</button>
@@ -40,6 +44,29 @@
         </div>
       </dialog>
 
+      <!-- Criando uma tarefa -->
+      <dialog class="bg-gray-800 m-auto h-96 w-[30rem] rounded-xl p-4" id="create-task-modal">
+        <div class="content-modal relative">
+          <button class="p-[0.1rem] absolute right-0" id="create-close-task-modal">X</button>
+          <h2 class="font-bold text-center">
+            Criando uma tarefa
+          </h2>
+          <div class="flex flex-col">
+            <label class="font-semibold" for="title-task">Título:</label>
+            <input class="h-8 rounded-[8px] focus:outline-none text-black pl-2 pr-2" type="text" id="create-title-task" />
+          </div>
+
+          <div class="flex flex-col mt-2">
+            <label class="font-semibold" for="description">Descrição:</label>
+            <textarea class="h-40 rounded-[8px] focus:outline-none resize-none text-black pl-2 pr-2" id="create-description"></textarea>
+          </div>
+          <div class="flex mt-4 justify-center">
+            <button class="bg-black p-4 rounded-[10px] font-semibold" id="create-task-submit">Registrar</button>
+          </div>
+        </div>
+      </dialog>
+
+      <!-- Criando um usuario -->
       <dialog class="bg-gray-800 m-auto h-98 w-[30rem] rounded-xl p-4" id="user-modal">
         <div class="content-modal relative">
           <h2 class="font-bold text-center">

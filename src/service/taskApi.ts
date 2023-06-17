@@ -38,6 +38,7 @@ export const taskApi = {
           console.log('Ocorreu um erro na requisição:', error);
         });      
   },
+
   updateTask: (id: number, dataToUpdate: ITaskField) => {
     fetch(`${baseURL}/tasks/${id}`, {
         method: 'PATCH',
@@ -57,6 +58,7 @@ export const taskApi = {
           console.log('Ocorreu um erro na requisição:', error);
         });      
   },
+
   getAllTasks: async () => {
     try {
       const response = await fetch(`${baseURL}/tasks`);
@@ -66,9 +68,10 @@ export const taskApi = {
       console.log("Ocorreu um erro na requisição", error)
    }
   },
+  
   createTask: async (dataToCreate: ITaskField) => {
     try {  
-      const response = await fetch(baseURL, {
+      const response = await fetch(`${baseURL}/tasks`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
