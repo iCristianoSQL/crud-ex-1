@@ -1,6 +1,7 @@
 # Todo-List App
 
 Este é um aplicativo frontend de um todo-list desenvolvido em Typescript puro, utilizando manipulação do DOM, Tailwind CSS, Vite e HTML semântico. A aplicação consome os endpoints de uma API desenvolvida em Ruby on Rails.
+[Backend do projeto](https://github.com/iCristianoSQL/api-todo-list-rails)
 ## Funcionalidades
 
 - Adicionar uma tarefa à lista de afazeres.
